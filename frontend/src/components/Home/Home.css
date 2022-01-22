@@ -1,0 +1,74 @@
+.th1, .td1 {
+    width: 10%;
+    color: #fbfbfe;
+}
+
+.th2, .td2 {
+    width: 27%;
+    color: #fbfbfe;
+}
+
+.th3, .td3 {
+    width: 13%;
+    color: #fbfbfe;
+}
+
+.th4, .td4 {
+    width: 20%;
+    color: #fbfbfe;
+}
+
+.th5 {
+    width: 30%;
+    color: #fbfbfe;
+}
+
+.td5 {
+    width: 30%;
+    align-items: center;
+}
+
+.card {
+    width: 350px;
+    margin-left: 70px;
+    margin-bottom: 10px;
+}
+
+.ldiv {
+    border: 1px solid rgb(19, 18, 18);
+    border-radius: 20px;
+    background-color: #5ba4bb;
+    margin-top: 50px;
+}
+
+.rdiv {
+    border: 1px solid rgb(19, 18, 18);
+    border-radius: 20px;
+    background-color: #5ba4bb;
+    margin-top: 50px;
+}
+
+.table th, .table td {
+    border: 3px solid #5ba4bb;
+    text-align: center;
+}
+
+.addbtn {
+    float: right;
+    margin: 15px;
+}
+
+.ebtn {
+    width: 70px;
+    margin: 6px;
+}
+
+.card-header {
+    color: #fbfbfe;
+}
+
+li {
+    color: rgb(40, 44, 52);
+    font-weight: 400;
+    font-size: 18px;
+}
