@@ -10,7 +10,7 @@ function Addcustomer() {
         const country = document.getElementById('country').value;
         const city = document.getElementById('city').value;
         const street = document.getElementById('street').value;
-        const phone = document.getElementById('phone').value
+        const phone = document.getElementById('phone').value;
         if (fname !== '' && lname !== '' && country !== '' && city !== '' && street !== '' && phone !== '') {
             axios.post('http://localhost:3001/addcustomer', {
                 uId: uId,
@@ -22,6 +22,8 @@ function Addcustomer() {
                 phone: phone
             })
         }
+        else
+            alert("Please fill all fields!!")
     }
     return (
         <div className='container addcont'>
@@ -29,11 +31,11 @@ function Addcustomer() {
                 <div className="form-group">
                     <h5 className='mt-5 mb-3'>Enter Customer Name :</h5>
                     <input type="text" placeholder='First Name' className='form-control mb-3 ip' id='fname' required />
-                    <input type="text" placeholder='Last Name' className='form-control ip' id='lname' />
+                    <input type="text" placeholder='Last Name' className='form-control ip' id='lname' required/>
                 </div>
                 <div className="form-group mt-5">
                     <h5>Enter Customer Id :</h5>
-                    <input type="text" placeholder='Unique Id' className='form-control ip' id='uId' />
+                    <input type="text" placeholder='Unique Id' className='form-control ip' id='uId' required/>
                 </div>
                 <div className="form-group mt-5">
                     <h5>Enter Customer Address :</h5>
