@@ -22,8 +22,8 @@ function Home() {
             }
         })
     }
-    function del(fname) {
-        axios.post('http://localhost:3001/deletecustomer', { fname: fname })
+    function del(uId) {
+        axios.post('http://localhost:3001/deletecustomer', { uId: uId })
     }
     useEffect(() => {
         axios.get('http://localhost:3001/viewcustomer').then(result => {
@@ -43,7 +43,7 @@ function Home() {
                                 <th scope="col" className='th2'>Customer Name</th>
                                 <th scope="col" className='th3'>Country</th>
                                 <th scope="col" className='th4'>Created Date</th>
-                                <th scope='col' className='th5'>Edit</th>
+                                <th scope='col' className='th5'>Actions</th>
                             </tr>
                         </thead>
                     </table>
@@ -59,7 +59,7 @@ function Home() {
                                             <td className='td4'>{date(obj.createdAt)}</td>
                                             <td className='td5'>
                                                 <a href='/edit' onClick={() => { edit(obj) }} className='btn btn-primary ebtn'>Edit</a>
-                                                <a href='/' className='btn btn-warning ebtn' onClick={() => { del(obj.fname) }}>Delete</a>
+                                                <a href='/' className='btn btn-warning ebtn' onClick={() => { del(obj.uId) }}>Delete</a>
                                                 <button onClick={() => { details(index) }} className='btn btn-secondary ebtn'>View</button>
                                             </td>
                                         </tr>

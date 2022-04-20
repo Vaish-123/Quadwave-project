@@ -37,8 +37,8 @@ app.get('/viewcustomer', (req, res) => {
     })
 })
 app.post('/deletecustomer', (req, res) => {
-    const fname = req.body.fname;
-    customers.deleteOne({ fname: fname }).then(result => {
+    const uId = req.body.uId;
+    customers.deleteOne({ uId: uId }).then(result => {
         res.json(result);
     })
 })
