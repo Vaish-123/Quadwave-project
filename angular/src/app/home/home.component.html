@@ -1,0 +1,177 @@
+<div class="container mt-5">
+    <button class="btn btn-info mb-3" type="button" data-toggle="modal" data-target="#addModal">Add</button>
+    <table class="table table-dark">
+        <thead>
+            <tr>
+                <th scope="col">No</th>
+                <th scope="col">Fname</th>
+                <th scope="col">Lname</th>
+                <th scope="col">Country</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of cusData;index as i">
+                <th scope="row">{{i+1}}</th>
+                <td>{{item.fname}}</td>
+                <td>{{item.lname}}</td>
+                <td>{{item.createdAt}}</td>
+                <td>
+                    <div class="dropdown">
+                        <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Actions</button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <button type="button" class="btn btn-primary vbtn" data-toggle="modal"
+                                data-target="#viewModal" href="#" (click)="view(i)">View</button>
+                            <br>
+                            <button class="btn btn-danger dbtn" (click)="delCus(item.uId)">Delete</button>
+                            <br>
+                            <button class="btn btn-info ubtn" type="button" data-toggle="modal"
+                                data-target="#updateModal" (click)="updateId(i)">Update</button>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- ViewModal -->
+<div class="modal fade" id="viewModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">View Customer</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="card" style="width: 18rem;">
+                    <div class="card-header">
+                        <h3>Personal Info</h3>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">First Name : {{cusData[id].fname}}</li>
+                        <li class="list-group-item">Last Name : {{cusData[id].lname}}</li>
+                        <li class="list-group-item">Customer Id : {{cusData[id].uId}}</li>
+                    </ul>
+                    <div class="card-header">
+                        <h3>Redidential Info</h3>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Nationality : {{cusData[id].country}}</li>
+                        <li class="list-group-item">City : {{cusData[id].city}}</li>
+                        <li class="list-group-item">Street : {{cusData[id].street}}</li>
+                        <li class="list-group-item">Contact No. : {{cusData[id].phone}}</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- AddModal -->
+<div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Add Customer</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form #addCusForm="ngForm">
+                    <div class="form-group">
+                        <h5 class='mb-3'>Enter Customer Name :</h5>
+                        <input type="text" placeholder='First Name' class='form-control mb-3 ip' id='fname' name="fname"
+                            #name="ngModel" ngModel />
+                        <input type="text" placeholder='Last Name' class='form-control ip' id='lname' name="lname"
+                            #name="ngModel" ngModel />
+                    </div>
+                    <div class="form-group">
+                        <h5>Enter Customer Id :</h5>
+                        <input type="text" placeholder='Unique Id' class='form-control ip' id='uId' name="uId"
+                            #name="ngModel" ngModel />
+                    </div>
+                    <div class="form-group">
+                        <h5>Enter Customer Address :</h5>
+                        <label htmlFor="country">Country</label>
+                        <input type="text" id='country' class='form-control ip' name="country" #name="ngModel"
+                            ngModel />
+                        <label htmlFor="city" class='mt-3'>City</label>
+                        <input type="text" id='city' class='form-control ip' name="city" #name="ngModel" ngModel />
+                        <label htmlFor="street" class='mt-3'>Street address</label>
+                        <input type="text" id='street' class='form-control ip' name="street" #name="ngModel" ngModel />
+                        <label htmlFor="phone" class='mt-3'>Contact info</label>
+                        <input type="number" id='phone' class='form-control ip' name="phone" #name="ngModel" ngModel />
+                        <div class="btndiv">
+                            <button type="submit" (click)="addCus(addCusForm.value)" class='btn btn-success mt-3 sbt'
+                                data-dismiss="modal">Submit</button>
+                            <button type="button" class="btn btn-secondary mt-3" style="float: right;"
+                                data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- UpdateModal -->
+<div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Update Customer</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form #updateCusForm="ngForm">
+                    <div class="form-group">
+                        <h5 class='mb-3'>Update Customer Name :</h5>
+                        <input type="text" placeholder='First Name' class='form-control mb-3 ip' id='fname' name="fname"
+                            #name="ngModel" ngModel value="{{cusData[upId].fname}}" />
+                        <input type="text" placeholder='Last Name' class='form-control ip' id='lname' name="lname"
+                            #name="ngModel" ngModel value="{{cusData[upId].lname}}" />
+                    </div>
+                    <div class="form-group">
+                        <h5>Customer Id :</h5>
+                        <input type="text" placeholder='Unique Id' class='form-control ip' id='uId' name="uId"
+                            #name="ngModel" ngModel value="{{cusData[upId].uId}}" readonly />
+                    </div>
+                    <div class="form-group">
+                        <h5>Update Customer Address :</h5>
+                        <label htmlFor="country">Country</label>
+                        <input type="text" id='country' class='form-control ip' name="country" #name="ngModel" ngModel
+                            value="{{cusData[upId].country}}" />
+                        <label htmlFor="city" class='mt-3'>City</label>
+                        <input type="text" id='city' class='form-control ip' name="city" #name="ngModel" ngModel
+                            value="{{cusData[upId].city}}" />
+                        <label htmlFor="street" class='mt-3'>Street address</label>
+                        <input type="text" id='street' class='form-control ip' name="street" #name="ngModel" ngModel
+                            value="{{cusData[upId].street}}" />
+                        <label htmlFor="phone" class='mt-3'>Contact info</label>
+                        <input type="number" id='phone' class='form-control ip' name="phone" #name="ngModel" ngModel
+                            value="{{cusData[upId].phone}}" />
+                        <div class="btndiv">
+                            <button type="submit" (click)="updateCus(updateCusForm.value)"
+                                class='btn btn-success mt-3 sbt' data-dismiss="modal">Update</button>
+                            <button type="button" class="btn btn-secondary mt-3" style="float: right;"
+                                data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

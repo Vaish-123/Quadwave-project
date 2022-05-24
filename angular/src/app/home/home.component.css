@@ -1,0 +1,36 @@
+.addcont {
+    width: 550px;
+    border: 2px solid #fbfbfe;
+    margin-top: 30px;
+    border-radius: 40px;
+}
+
+.sbt {
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+}
+
+.btndiv {
+    text-align: center;
+}
+
+label {
+    font-weight: 600;
+}
+
+.ip {
+    font-weight: 600;
+    color: black;
+    font-size: 18px;
+}
+
+.ip::placeholder {
+    color: grey;
+    font-weight: 400;
+}
+.vbtn, .dbtn, .ubtn{
+    margin-left: 2rem;
+    width: 100px;
+    margin-bottom: 5px;
+}
